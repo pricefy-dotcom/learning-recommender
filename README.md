@@ -21,9 +21,9 @@ Middle/high school students or self-directed adult learners.
 - **Deployment:** Vercel (frontend), Railway (backend)
 
 ## Project Phases
-- [ ] Week 1: Planning + dataset selection
-- [ ] Week 2: Data cleaning + exploration
-- [ ] Week 3-4: Model building
+- [X] Week 1: Planning + dataset selection
+- [X] Week 2: Data cleaning + exploration
+- [X] Week 3-4: Model building
 - [ ] Week 5: API development
 - [ ] Week 6: Frontend
 - [ ] Week 7: Deployment
