@@ -7,21 +7,45 @@ const defaultForm = {
   Walc: '', Dalc: '', age: '', romantic: '', traveltime: ''
 };
 
-const fieldConfig = [
-  { key: 'G1', label: 'First Period Grade', hint: '0 to 20' },
-  { key: 'G2', label: 'Second Period Grade', hint: '0 to 20' },
-  { key: 'failures', label: 'Past Failures', hint: '0, 1, 2, or 3' },
-  { key: 'Medu', label: "Mother's Education", hint: '0 (none) to 4 (higher ed)' },
-  { key: 'Fedu', label: "Father's Education", hint: '0 (none) to 4 (higher ed)' },
-  { key: 'higher', label: 'Wants Higher Education', hint: '1 = yes, 0 = no' },
-  { key: 'studytime', label: 'Weekly Study Time', hint: '1 (<2hrs) to 4 (>10hrs)' },
-  { key: 'absences', label: 'Number of Absences', hint: '0 to 93' },
-  { key: 'goout', label: 'Goes Out With Friends', hint: '1 (rarely) to 5 (very often)' },
-  { key: 'Walc', label: 'Weekend Alcohol Use', hint: '1 (none) to 5 (very high)' },
-  { key: 'Dalc', label: 'Weekday Alcohol Use', hint: '1 (none) to 5 (very high)' },
-  { key: 'age', label: 'Student Age', hint: '15 to 22' },
-  { key: 'romantic', label: 'In a Relationship', hint: '1 = yes, 0 = no' },
-  { key: 'traveltime', label: 'Travel Time to School', hint: '1 (<15min) to 4 (>1hr)' },
+const sections = [
+  {
+    title: 'Academic Performance',
+    hint: 'Enter grades on a scale of 0 to 20',
+    fields: [
+      { key: 'G1', label: 'First Period Grade', min: 0, max: 20 },
+      { key: 'G2', label: 'Second Period Grade', min: 0, max: 20 },
+      { key: 'failures', label: 'Past Class Failures', min: 0, max: 3 },
+      { key: 'absences', label: 'Number of Absences', min: 0, max: 93 },
+      { key: 'studytime', label: 'Weekly Study Time', min: 1, max: 4, note: '1 = <2 hrs, 2 = 2–5 hrs, 3 = 5–10 hrs, 4 = >10 hrs' },
+    ]
+  },
+  {
+    title: 'Family Background',
+    hint: 'Education levels: 0 = None, 1 = Primary, 2 = Middle School, 3 = High School, 4 = College',
+    fields: [
+      { key: 'Medu', label: "Mother's Education Level", min: 0, max: 4 },
+      { key: 'Fedu', label: "Father's Education Level", min: 0, max: 4 },
+    ]
+  },
+  {
+    title: 'Student Profile',
+    hint: 'Personal details about the student',
+    fields: [
+      { key: 'age', label: 'Student Age', min: 15, max: 22 },
+      { key: 'higher', label: 'Wants Higher Education', min: 0, max: 1, note: '0 = No, 1 = Yes' },
+      { key: 'romantic', label: 'In a Romantic Relationship', min: 0, max: 1, note: '0 = No, 1 = Yes' },
+      { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, note: '1 = <15 min, 2 = 15–30 min, 3 = 30–60 min, 4 = >1 hr' },
+    ]
+  },
+  {
+    title: 'Lifestyle',
+    hint: 'Rate each on a scale of 1 (very low) to 5 (very high)',
+    fields: [
+      { key: 'goout', label: 'Social Activity Level', min: 1, max: 5 },
+      { key: 'Walc', label: 'Weekend Alcohol Use', min: 1, max: 5 },
+      { key: 'Dalc', label: 'Weekday Alcohol Use', min: 1, max: 5 },
+    ]
+  }
 ];
 
 export default function App() {
@@ -63,28 +87,39 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>🎓 Learning Recommendation Engine</h1>
+      <h1>Learning Recommendation Engine</h1>
       <p className="subtitle">
         Enter a student's information to get personalized learning recommendations
       </p>
 
       <div className="card">
         <h2>Student Information</h2>
-        <div className="form-grid">
-          {fieldConfig.map(({ key, label, hint }) => (
-            <div className="form-group" key={key}>
-              <label>{label}</label>
-              <span>{hint}</span>
-              <input
-                type="number"
-                name={key}
-                value={form[key]}
-                onChange={handleChange}
-                placeholder={hint}
-              />
+        {sections.map(({ title, hint, fields }) => (
+          <div className="section" key={title}>
+            <div className="section-header">
+              <h3>{title}</h3>
+              <p className="section-hint">{hint}</p>
             </div>
-          ))}
-        </div>
+            <div className="form-grid">
+              {fields.map(({ key, label, min, max, note }) => (
+                <div className="form-group" key={key}>
+                  <div className="label-row">
+                    <label>{label}</label>
+                    {note && <span className="field-note">{note}</span>}
+                  </div>
+                  <input
+                    type="number"
+                    name={key}
+                    value={form[key]}
+                    onChange={handleChange}
+                    min={min}
+                    max={max}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
 
         <button
           className="submit-btn"
