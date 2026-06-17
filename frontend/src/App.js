@@ -143,7 +143,7 @@ export default function App() {
           </p>
 
           <div className="recommendations">
-            <h3>📚 Recommended Resources</h3>
+            <h3>Recommended Resources</h3>
             {result.recommendations.map((rec, i) => (
               <div className="rec-item" key={i}>
                 <a href={rec.url} target="_blank" rel="noreferrer">{rec.title}</a>
