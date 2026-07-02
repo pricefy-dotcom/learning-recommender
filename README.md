@@ -16,98 +16,32 @@ A web app where students input their quiz performance across
 topics, and receive personalized resource recommendations
 based on their unique learning profile.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-|
-Layer
-|
-Technology
-|
-|
----
-|
----
-|
-|
-Machine Learning
-|
-Python, scikit-learn, pandas, numpy
-|
-|
-Backend API
-|
-FastAPI, uvicorn
-|
-|
-Frontend
-|
-React, CSS
-|
-|
-Deployment
-|
-Vercel (frontend), Render (backend)
-|
-|
-Version Control
-|
-Git, Github
-|
+| Layer | Technology |
+|---|---|
+| Machine Learning | Python, scikit-learn, pandas, numpy |
+| Backend API | FastAPI, uvicorn |
+| Frontend | React, CSS |
+| Deployment | Vercel (frontend), Render (backend) |
+| Version Control | Git, GitHub |
+
 ---
 
-## Model Performance
+## 🤖 Model Performance
 
 - **Algorithm:** Random Forest Classifier
 - **Accuracy:** 87%
-- **Dataset:** Student Performance DATAset (395 students, 33 features)
+- **Dataset:** Student Performance Dataset (395 students, 33 features)
 
-|
- Category
-|
- Precision
-|
- Recall
-|
- F1 Score
-|
-|
----
-|
----
-|
----
-|
----
-|
-|
- Struggling
-|
- 0.82
-|
- 0.88
-|
- 0.85
-|
-|
- Average
-|
- 0.87
-|
- 0.87
-|
- 0.87
-|
-|
- Excelling
-|
- 1.00
-|
- 0.87
-|
- 0.93
-|
+| Category | Precision | Recall | F1 Score |
+|---|---|---|---|
+| Struggling | 0.82 | 0.88 | 0.85 |
+| Average | 0.87 | 0.87 | 0.87 |
+| Excelling | 1.00 | 0.87 | 0.93 |
 
 ---
+
 
 ## Key Findings
 
