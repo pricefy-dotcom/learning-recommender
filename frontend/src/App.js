@@ -69,7 +69,7 @@ export default function App() {
         payload[key] = parseInt(form[key]);
       }
 
-      const response = await fetch('https://learning-recommender-1xfe.onrender.com', {
+      const response = await fetch('https://learning-recommender-1xfe.onrender.com/recommend', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
