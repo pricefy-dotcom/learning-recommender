@@ -86,31 +86,6 @@ cd frontend
 npm install
 npm start
 ```
-## Project Structure
-
-learning-recommendations/
-|-api/ <- FastAPI backend
-|--main.py <- API endpoints
-|--recommender.py <- Model loading and recommendations
-|-data/
-|--raw/ <- Original dataset
-|--processed/ <- Cleaned dataset
-|-frontend/ <- React frontend
-|--src/
-|--App.js <- Main UI component
-|--App.css <- Styling
-|-models/ <- Saved ML model and scaler
-|-notebooks <- Jupyter notebooks
-|--01_data_exploration.ipynb
-|--02_data_cleaning.ipynb
-|--03_data_exploration.ipynb
-|--04_model_building.ipynb
-|-.gitignore
-|-.python-version
-|-README.md
-|-render.yaml
-|-requirements.text
-
 ---
 
 ## Future Improvements
