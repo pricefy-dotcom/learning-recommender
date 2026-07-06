@@ -129,6 +129,17 @@ export default function App() {
           {loading ? 'Analyzing...' : 'Get Recommendations'}
         </button>
 
+        {loading && (
+          <div className="loading-message">
+            <div className="loading-spinner"></div>
+            <p> Analyzing student profile...</p>
+            <p className="loading-sub">
+              If this is your first request in a while, the server may take
+              up to 30 seconds to wake up. Thank you for your patience!
+            </p>
+          </div>
+        )}
+
         {error && <div className="error">⚠️ {error}</div>}
       </div>
 
