@@ -1,4 +1,4 @@
-# 🎓 Personalized Learning Recommendation Engine
+# Personalized Learning Recommendation Engine
 
 A full-stack machine learning web application that predicts student 
 performance and recommends personalized learning resources based on 
@@ -8,13 +8,13 @@ academic and lifestyle factors.
 
 ---
 
-## 📌 Problem
+## Problem
 
 Students waste time studying topics they already understand while 
 struggling areas go unaddressed. There is no personalized guidance 
 for self-directed learners that adapts to their unique profile.
 
-## 💡 Solution
+## Solution
 
 A web app where students input their academic performance and lifestyle 
 factors to receive personalized resource recommendations based on their 
@@ -22,7 +22,7 @@ predicted performance category — Struggling, Average, or Excelling.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -34,7 +34,7 @@ predicted performance category — Struggling, Average, or Excelling.
 
 ---
 
-## 🤖 Model Performance
+## Model Performance
 
 - **Algorithm:** Random Forest Classifier
 - **Accuracy:** 87%
@@ -48,7 +48,7 @@ predicted performance category — Struggling, Average, or Excelling.
 
 ---
 
-## 🔍 Key Findings
+## Key Findings
 
 - **G1 and G2** (prior period grades) are by far the strongest 
   predictors of final performance, accounting for ~67% of model 
@@ -63,7 +63,7 @@ predicted performance category — Struggling, Average, or Excelling.
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 - Dataset contains only 395 students from two Portuguese schools — 
   results may not generalize globally
@@ -76,7 +76,7 @@ predicted performance category — Struggling, Average, or Excelling.
 
 ---
 
-## 🚀 Getting Started Locally
+## Getting Started Locally
 
 ### Prerequisites
 - Python 3.13.2
@@ -103,7 +103,7 @@ npm start
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - Expand dataset to include more schools and regions
 - Add subject specific recommendations beyond mathematics
@@ -120,7 +120,7 @@ Source: https://www.kaggle.com/datasets/whenamancodes/student-performance/data
 
 Math.csv is used, not Portuguese.csv
 
-## 👤 Author
+## Author
 
 **Tyler Price**
 - GitHub: [@pricefy-dotcom](https://github.com/pricefy-dotcom)
