@@ -114,6 +114,12 @@ npm start
 
 ---
 
+## Dataset
+
+Source: https://www.kaggle.com/datasets/whenamancodes/student-performance/data
+
+Math.csv is used, not Portuguese.csv
+
 ## 👤 Author
 
 **Tyler Price**
