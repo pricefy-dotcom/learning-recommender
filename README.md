@@ -218,17 +218,24 @@ npm start
 ## Target User
 Middle/high school students or self-directed adult learners.
 
+## Tech Stack
+- **Data/ML:** Python, pandas, scikit-learn
+- **Backend:** FastAPI
+- **Frontend:** React
+- **Database:** Supabase (PostgreSQL)
+- **Deployment:** Vercel (frontend), Railway (backend)
+
 ## Project Phases
-- [X] 1: Planning + dataset selection
-- [X] 2: Data cleaning + exploration
-- [X] 3-4: Model building
-- [X] 5: API development
-- [X] 6: Frontend
-- [X] 7: Deployment
-- [X] 8: Documentation + polish
+- [X] Week 1: Planning + dataset selection
+- [X] Week 2: Data cleaning + exploration
+- [X] Week 3-4: Model building
+- [ ] Week 5: API development
+- [ ] Week 6: Frontend
+- [ ] Week 7: Deployment
+- [ ] Week 8: Documentation + polish
 
 ## Dataset
-Source: ASSISTments (real Portuguese student math performance data)
+Source: ASSISTments (real student math performance data)
 
 ## Success Criteria
 A deployed app that takes student scores as input and returns
