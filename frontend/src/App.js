@@ -7,6 +7,21 @@ const defaultForm = {
   Walc: '', Dalc: '', age: '', romantic: '', traveltime: ''
 };
 
+function ToggleSwitch({ name, value, onChange, label }) {
+  return (
+    <div className='toggle-group'>
+      <label className='toggle-switch'>
+        <input
+          type="checkbox"
+          checked={value === 1}
+          onChange={(e) => onChange(name, e.target.checked ? 1 : 0)}
+        />
+        <span className='toggle-slider'></span>
+      </label>
+    </div>
+  );
+}
+
 const sections = [
   {
     title: 'Academic Performance',
@@ -32,8 +47,8 @@ const sections = [
     hint: 'Personal details about the student',
     fields: [
       { key: 'age', label: 'Student Age', min: 15, max: 22 },
-      { key: 'higher', label: 'Wants Higher Education', min: 0, max: 1, note: '0 = No, 1 = Yes' },
-      { key: 'romantic', label: 'In a Romantic Relationship', min: 0, max: 1, note: '0 = No, 1 = Yes' },
+      { key: 'higher', label: 'Wants Higher Education', min: 0, max: 1, type: 'toggle', note: '0 = No, 1 = Yes' },
+      { key: 'romantic', label: 'In a Romantic Relationship', min: 0, max: 1, type: 'toggle', note: '0 = No, 1 = Yes' },
       { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, note: '1 = <15 min, 2 = 15–30 min, 3 = 30–60 min, 4 = >1 hr' },
     ]
   },
@@ -56,6 +71,10 @@ export default function App() {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleChange = (name, value) => {
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = async () => {
@@ -107,15 +126,23 @@ export default function App() {
                     <label>{label}</label>
                     {note && <span className="field-note">{note}</span>}
                   </div>
-                  <input
-                    type="number"
-                    name={key}
-                    value={form[key]}
-                    onChange={handleChange}
-                    min={min}
-                    max={max}
-                  />
-                </div>
+                  {type === 'toggle' ? (
+                    <ToggleSwitch
+                      name={key}
+                      value={form[key]}
+                      onChange={handleToggle}
+                    />
+                  ) : (
+                    <input
+                      type="number"
+                      name={key}
+                      value={form[key]}
+                      onChange={handleChange}
+                      min={min}
+                      max={max}
+                    />
+                  )}
+                </div>  
               ))}
             </div>
           </div>
