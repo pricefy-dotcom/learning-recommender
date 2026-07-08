@@ -3,11 +3,11 @@ import './App.css';
 
 const defaultForm = {
   G1: '', G2: '', failures: '', Medu: '', Fedu: '',
-  higher: '', studytime: '', absences: '', goout: '',
-  Walc: '', Dalc: '', age: '', romantic: '', traveltime: ''
+  higher: 0, studytime: '', absences: '', goout: '',
+  Walc: '', Dalc: '', age: '', romantic: 0, traveltime: ''
 };
 
-function ToggleSwitch({ name, value, onChange, label }) {
+function ToggleSwitch({ name, value, onChange }) {
   return (
     <div className='toggle-group'>
       <label className='toggle-switch'>
@@ -18,6 +18,7 @@ function ToggleSwitch({ name, value, onChange, label }) {
         />
         <span className='toggle-slider'></span>
       </label>
+      <span className='toggle-label'>{value === 1 ? 'Yes' : 'No'}</span>
     </div>
   );
 }
@@ -47,8 +48,8 @@ const sections = [
     hint: 'Personal details about the student',
     fields: [
       { key: 'age', label: 'Student Age', min: 15, max: 22 },
-      { key: 'higher', label: 'Wants Higher Education', min: 0, max: 1, type: 'toggle', note: '0 = No, 1 = Yes' },
-      { key: 'romantic', label: 'In a Romantic Relationship', min: 0, max: 1, type: 'toggle', note: '0 = No, 1 = Yes' },
+      { key: 'higher', label: 'Wants Higher Education', type: 'toggle' },
+      { key: 'romantic', label: 'In a Romantic Relationship', type: 'toggle' },
       { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, note: '1 = <15 min, 2 = 15–30 min, 3 = 30–60 min, 4 = >1 hr' },
     ]
   },
@@ -73,7 +74,7 @@ export default function App() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (name, value) => {
+  const handleToggle = (name, value) => {
     setForm({ ...form, [name]: value });
   };
 
@@ -120,7 +121,7 @@ export default function App() {
               <p className="section-hint">{hint}</p>
             </div>
             <div className="form-grid">
-              {fields.map(({ key, label, min, max, note }) => (
+              {fields.map(({ key, label, min, max, note, type }) => (
                 <div className="form-group" key={key}>
                   <div className="label-row">
                     <label>{label}</label>
@@ -142,7 +143,7 @@ export default function App() {
                       max={max}
                     />
                   )}
-                </div>  
+                </div>
               ))}
             </div>
           </div>
@@ -159,7 +160,7 @@ export default function App() {
         {loading && (
           <div className="loading-message">
             <div className="loading-spinner"></div>
-            <p> Analyzing student profile...</p>
+            <p>Analyzing student profile...</p>
             <p className="loading-sub">
               If this is your first request in a while, the server may take
               up to 30 seconds to wake up. Thank you for your patience!
