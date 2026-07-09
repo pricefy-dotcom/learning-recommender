@@ -409,3 +409,15 @@ input:checked + .toggle-slider:before {
 .slider-tick:last-child {
   text-align: right;
 }
+
+.input-error {
+  border: 1px solid #e74c3c !important;
+  background-color: #fff8f8;
+}
+
+.field-error-msg {
+  font-size: 0.75rem;
+  color: #e74c3c;
+  margin-top: 4px;
+  display: block;
+}

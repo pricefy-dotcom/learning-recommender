@@ -101,6 +101,7 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({})
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -110,7 +111,32 @@ export default function App() {
     setForm({ ...form, [name]: value });
   };
 
+  const validate = () => {
+    const errors = {};
+
+    if (form.G1 === '') errors.G1 = 'Required';
+    if (form.G2 === '') errors.G2 = 'Required';
+    if (form.failures === '') errors.failures = 'Required';
+    if (form.absences === '') errors.absences = 'Required';
+    if (form.studytime === '') errors.studytime = 'Required';
+    if (form.Medu === '') errors.Medu = 'Required';
+    if (form.Fedu === '') errors.Fedu = 'Required';
+    if (form.age === '') errors.age = 'Required';
+    if (form.traveltime== '') errors.traveltime = 'Required';
+    if (form.goout === '') errors.goout = 'Required';
+    if (form.Walc === '') errors.Walc = 'Required';
+    if (form.Dalc === '') errors.Dalc = 'Required';
+
+    return errors;
+  };
+  
   const handleSubmit = async () => {
+    const errors = validate();
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+    setFieldErrors({})
     setLoading(true);
     setError(null);
     setResult(null);
@@ -176,20 +202,32 @@ export default function App() {
                       ticks={ticks}
                     />
                   ) : (
-                    <input
-                      type="number"
-                      name={key}
-                      value={form[key]}
-                      onChange={handleChange}
-                      min={min}
-                      max={max}
-                    />
+                    <div>
+                      <input
+                        type="number"
+                        name={key}
+                        value={form[key]}
+                        onChange={handleChange}
+                        min={min}
+                        max={max}
+                        className={fieldErrors[key] ? 'input-error' : ''}
+                      />
+                      {fieldErrors[key] && (
+                        <span className="field-error-msg">{fieldErrors[key]}</span>
+                      )}
+                    </div>
                   )}
                 </div>
               ))}
             </div>
           </div>
         ))}
+
+        {Object.keys(fieldErrors).length > 0 && (
+          <div className='error'>
+            Please fill in all fields before submitting.
+          </div>
+        )}
 
         <button
           className="submit-btn"
