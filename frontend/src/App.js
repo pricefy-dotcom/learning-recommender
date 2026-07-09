@@ -153,7 +153,7 @@ export default function App() {
               <p className="section-hint">{hint}</p>
             </div>
             <div className="form-grid">
-              {fields.map(({ key, label, min, max, note, type, labels }) => (
+              {fields.map(({ key, label, min, max, note, type, labels, ticks }) => (
                 <div className="form-group" key={key}>
                   <div className="label-row">
                     <label>{label}</label>
@@ -173,6 +173,7 @@ export default function App() {
                       min={min}
                       max={max}
                       labels={labels}
+                      ticks={ticks}
                     />
                   ) : (
                     <input
