@@ -23,6 +23,31 @@ function ToggleSwitch({ name, value, onChange }) {
   );
 }
 
+function SliderInput({ name, value, onChange, min, max, labels }) {
+  return (
+    <div className='slider-group'>
+      <span className='slider-value'>
+        {value !== '' ? value : min}
+      </span>
+      <input
+        type='range'
+        className='slider-input'
+        name={name}
+        min={min}
+        max={max}
+        value={value !== '' ? value : min}
+        onChange={(e) => onChange(name, parseInt(e.target.value))}
+      />
+      {labels && (
+        <div className='slider-labels'>
+          <span>{labels[0]}</span>
+          <span>{labelsls[labels.length - 1]}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const sections = [
   {
     title: 'Academic Performance',
@@ -32,15 +57,15 @@ const sections = [
       { key: 'G2', label: 'Second Period Grade', min: 0, max: 20 },
       { key: 'failures', label: 'Past Class Failures', min: 0, max: 3 },
       { key: 'absences', label: 'Number of Absences', min: 0, max: 93 },
-      { key: 'studytime', label: 'Weekly Study Time', min: 1, max: 4, note: '1 = <2 hrs, 2 = 2–5 hrs, 3 = 5–10 hrs, 4 = >10 hrs' },
+      { key: 'studytime', label: 'Weekly Study Time', min: 1, max: 4, type: 'slider', labels: ['<2 hrs', '2-5 hrs', '5-10 hrs', '>10 hrs'] },
     ]
   },
   {
     title: 'Family Background',
-    hint: 'Education levels: 0 = None, 1 = Primary, 2 = Middle School, 3 = High School, 4 = College',
+    hint: 'Education levels: 0 = None to 4 = College',
     fields: [
-      { key: 'Medu', label: "Mother's Education Level", min: 0, max: 4 },
-      { key: 'Fedu', label: "Father's Education Level", min: 0, max: 4 },
+      { key: 'Medu', label: "Mother's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'] },
+      { key: 'Fedu', label: "Father's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'] },
     ]
   },
   {
@@ -50,16 +75,16 @@ const sections = [
       { key: 'age', label: 'Student Age', min: 15, max: 22 },
       { key: 'higher', label: 'Wants Higher Education', type: 'toggle' },
       { key: 'romantic', label: 'In a Romantic Relationship', type: 'toggle' },
-      { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, note: '1 = <15 min, 2 = 15–30 min, 3 = 30–60 min, 4 = >1 hr' },
+      { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, type: 'slider', labels: ['<15 min', '>1 hr'] },
     ]
   },
   {
     title: 'Lifestyle',
     hint: 'Rate each on a scale of 1 (very low) to 5 (very high)',
     fields: [
-      { key: 'goout', label: 'Social Activity Level', min: 1, max: 5 },
-      { key: 'Walc', label: 'Weekend Alcohol Use', min: 1, max: 5 },
-      { key: 'Dalc', label: 'Weekday Alcohol Use', min: 1, max: 5 },
+      { key: 'goout', label: 'Social Activity Level', min: 1, max: 5, type: 'slider', labels: ['Rarely', 'Very Often'] },
+      { key: 'Walc', label: 'Weekend Alcohol Use', min: 1, max: 5, type: 'slider', labels: ['None', 'Very High'] },
+      { key: 'Dalc', label: 'Weekday Alcohol Use', min: 1, max: 5, type: 'slider', labels: ['None', 'Very High'] },
     ]
   }
 ];
@@ -121,7 +146,7 @@ export default function App() {
               <p className="section-hint">{hint}</p>
             </div>
             <div className="form-grid">
-              {fields.map(({ key, label, min, max, note, type }) => (
+              {fields.map(({ key, label, min, max, note, type, labels }) => (
                 <div className="form-group" key={key}>
                   <div className="label-row">
                     <label>{label}</label>
@@ -132,6 +157,15 @@ export default function App() {
                       name={key}
                       value={form[key]}
                       onChange={handleToggle}
+                    />
+                  ) : type === 'slider' ? (
+                    <SliderInput
+                      name={key}
+                      value={form[key]}
+                      onChange={handleToggle}
+                      min={min}
+                      max={max}
+                      labels={labels}
                     />
                   ) : (
                     <input
