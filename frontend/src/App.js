@@ -122,7 +122,7 @@ export default function App() {
     if (form.Medu === '') errors.Medu = 'Required';
     if (form.Fedu === '') errors.Fedu = 'Required';
     if (form.age === '') errors.age = 'Required';
-    if (form.traveltime== '') errors.traveltime = 'Required';
+    if (form.traveltime === '') errors.traveltime = 'Required';
     if (form.goout === '') errors.goout = 'Required';
     if (form.Walc === '') errors.Walc = 'Required';
     if (form.Dalc === '') errors.Dalc = 'Required';
