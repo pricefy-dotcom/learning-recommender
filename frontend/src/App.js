@@ -23,7 +23,7 @@ function ToggleSwitch({ name, value, onChange }) {
   );
 }
 
-function SliderInput({ name, value, onChange, min, max, labels }) {
+function SliderInput({ name, value, onChange, min, max, labels, ticks }) {
   return (
     <div className='slider-group'>
       <span className='slider-value'>
@@ -38,7 +38,14 @@ function SliderInput({ name, value, onChange, min, max, labels }) {
         value={value !== '' ? value : min}
         onChange={(e) => onChange(name, parseInt(e.target.value))}
       />
-      {labels && (
+      {ticks && (
+        <div className='slider-ticks'>
+          {ticks.map((tick, i) => (
+            <span key={i} className='slider-tick'>{tick}</span>
+          ))}
+        </div>
+      )}
+      {!ticks && labels && (
         <div className='slider-labels'>
           <span>{labels[0]}</span>
           <span>{labels[labels.length - 1]}</span>
@@ -57,15 +64,15 @@ const sections = [
       { key: 'G2', label: 'Second Period Grade', min: 0, max: 20 },
       { key: 'failures', label: 'Past Class Failures', min: 0, max: 3 },
       { key: 'absences', label: 'Number of Absences', min: 0, max: 93 },
-      { key: 'studytime', label: 'Weekly Study Time', min: 1, max: 4, type: 'slider', labels: ['<2 hrs', '2-5 hrs', '5-10 hrs', '>10 hrs'] },
+      { key: 'studytime', label: 'Weekly Study Time', min: 1, max: 4, type: 'slider', labels: ['<2 hrs', '>10 hrs'], ticks: ['<2 hrs', '2-5 hrs', '5-10 hrs', '>10 hrs'] },
     ]
   },
   {
     title: 'Family Background',
     hint: 'Education levels: 0 = None to 4 = College',
     fields: [
-      { key: 'Medu', label: "Mother's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'] },
-      { key: 'Fedu', label: "Father's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'] },
+      { key: 'Medu', label: "Mother's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'], ticks: ['None', 'Primary', 'Middle', 'High School', 'College'] },
+      { key: 'Fedu', label: "Father's Education Level", min: 0, max: 4, type: 'slider', labels: ['None', 'College'], ticks: ['None', 'Primary', 'Middle', 'High School', 'College'] },
     ]
   },
   {
@@ -75,7 +82,7 @@ const sections = [
       { key: 'age', label: 'Student Age', min: 15, max: 22 },
       { key: 'higher', label: 'Wants Higher Education', type: 'toggle' },
       { key: 'romantic', label: 'In a Romantic Relationship', type: 'toggle' },
-      { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, type: 'slider', labels: ['<15 min', '>1 hr'] },
+      { key: 'traveltime', label: 'Travel Time to School', min: 1, max: 4, type: 'slider', labels: ['<15 min', '>1 hr'], ticks: ['<15 min', '15-29 min', '30-59 min', '>1 hr'] },
     ]
   },
   {

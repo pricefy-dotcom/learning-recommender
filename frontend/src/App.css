@@ -388,3 +388,24 @@ input:checked + .toggle-slider:before {
   font-size: 0.72rem;
   color: #999;
 }
+
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.slider-tick {
+  font-size: 0.68rem;
+  color: #999;
+  text-align: center;
+  flex: 1;
+}
+
+.slider-tick:first-child {
+  text-align: left;
+}
+
+.slider-tick:last-child {
+  text-align: right;
+}
