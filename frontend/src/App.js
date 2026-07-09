@@ -41,7 +41,7 @@ function SliderInput({ name, value, onChange, min, max, labels }) {
       {labels && (
         <div className='slider-labels'>
           <span>{labels[0]}</span>
-          <span>{labelsls[labels.length - 1]}</span>
+          <span>{labels[labels.length - 1]}</span>
         </div>
       )}
     </div>
