@@ -8,13 +8,6 @@ academic and lifestyle factors.
 🔗 **Live Demo:** [https://learning-recommender-beta.vercel.app](https://learning-recommender-beta.vercel.app)
 
 ---
-=======
-A full-stack machine learning web application that predicts student
-performance and recommends personalized learning resources based on
-academic and lifestyle factors.
-
-** Live Demo: https://learning-recommender-git-main-pricefy.vercel.app/
->>>>>>> 7e9de5c (Update loading with spinner and server wake up message)
 
 ## Problem
 
@@ -224,15 +217,6 @@ Middle/high school students or self-directed adult learners.
 - **Frontend:** React
 - **Database:** Supabase (PostgreSQL)
 - **Deployment:** Vercel (frontend), Railway (backend)
-
-## Project Phases
-- [X] Week 1: Planning + dataset selection
-- [X] Week 2: Data cleaning + exploration
-- [X] Week 3-4: Model building
-- [ ] Week 5: API development
-- [ ] Week 6: Frontend
-- [ ] Week 7: Deployment
-- [ ] Week 8: Documentation + polish
 
 ## Dataset
 Source: ASSISTments (real student math performance data)
